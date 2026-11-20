@@ -1,0 +1,83 @@
+{{ define "main" }}
+  {{ $links := site.Params.links }}
+  {{/* The page to share when inviting someone: one big button to the Slack, then why and how. */}}
+  <section class="bg-celeste">
+    <div class="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 sm:py-24">
+      <p class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-sm font-bold">
+        <span class="size-2 rounded-full bg-flamboyan"></span> {{ site.Params.slackMembers }} personas ya están adentro
+      </p>
+      <h1 class="rotulo mt-6 text-5xl text-navy sm:text-7xl">Únete a Indie Hackers Puerto Rico</h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg font-medium leading-relaxed sm:text-xl">
+        El hogar de los emprendedores independientes boricuas. Si trabajas remoto, eres freelancer o estás construyendo
+        algo propio desde la Isla o para ella, aquí está tu gente.
+      </p>
+      <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <a href="{{ $links.slack }}" class="btn-solid px-8 py-4 text-lg shadow-[5px_5px_0_var(--color-flamboyan)]">Únete gratis al Slack →</a>
+        <a href="#mastermind" class="btn-outline px-8 py-4 text-lg">Ver el Mastermind</a>
+      </div>
+      <ul class="mt-12 flex justify-center -space-x-3" aria-hidden="true">
+        {{ range first 10 hugo.Data.miembros }}
+          {{ with resources.Get (printf "images/miembros/%s" .photo) }}
+            {{ with .Fill "96x96 webp smart" }}
+              <li><img src="{{ .RelPermalink }}" width="48" height="48" alt="" class="size-12 rounded-full border-2 border-white object-cover"></li>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      </ul>
+    </div>
+  </section>
+
+  {{ partial "bandera.html" }}
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <h2 class="display text-3xl sm:text-4xl">Cómo unirte</h2>
+    <ol class="mt-8 grid gap-8 md:grid-cols-3">
+      {{ range $i, $step := slice
+        (printf "[Entra al Slack](%s) y preséntate: quién eres, qué construyes y en qué te podemos ayudar." $links.slack)
+        (printf "[Regístrate en Luma](%s) para el Mastermind de los viernes y trae lo que estás construyendo." $links.luma)
+        "Sal en la lista de [miembros](/#miembros): copia el prompt de [Contribuye](/contribuye/) y tu agente te añade."
+      }}
+        <li class="border-t-4 border-navy pt-4">
+          <p class="display text-4xl text-flamboyan">{{ add $i 1 }}</p>
+          <p class="mt-3 text-lg leading-relaxed [&_a]:font-semibold [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-flamboyan">{{ $step | markdownify }}</p>
+        </li>
+      {{ end }}
+    </ol>
+  </section>
+
+  {{ partial "unete.html" . }}
+
+  {{ with site.Params.mastermind }}
+    <section id="mastermind" class="scroll-mt-4 bg-celeste-light">
+      <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <h2 class="display text-3xl sm:text-4xl">Mastermind cada viernes</h2>
+        <p class="mt-6 max-w-prose text-lg leading-relaxed">
+          Presenta tu venture. Recibe feedback real. Avanza cada semana. Viernes, {{ .time }} (hora de Puerto Rico),
+          online por {{ .platform }}.
+        </p>
+        <a href="{{ $links.luma }}" class="btn-solid mt-8">Regístrate en Luma</a>
+      </div>
+    </section>
+  {{ end }}
+
+  {{/* Sharing: the native share sheet on phones, copying the link everywhere else. */}}
+  <section class="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6">
+    <h2 class="display text-3xl sm:text-4xl">¿Conoces a alguien que debería estar aquí?</h2>
+    <p class="mx-auto mt-4 max-w-xl text-lg text-navy/70">Mándale este enlace. La comunidad crece de boca en boca.</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <button type="button" class="btn-solid" data-share data-copied="¡Enlace copiado!" data-copy-text="{{ .Permalink }}">Compartir esta página</button>
+      <a href="https://wa.me/?text={{ printf "Únete a Indie Hackers Puerto Rico: %s" .Permalink | urlquery }}" class="btn-outline">Enviar por WhatsApp</a>
+    </div>
+  </section>
+
+  <script>
+    // Prefer the share sheet where there is one; the copy partial handles the click otherwise.
+    for (const button of document.querySelectorAll("[data-share]")) {
+      if (!navigator.share) continue;
+      button.addEventListener("click", (event) => {
+        event.stopImmediatePropagation();
+        navigator.share({ title: document.title, url: button.dataset.copyText }).catch(() => {});
+      }, { capture: true });
+    }
+  </script>
+{{ end }}

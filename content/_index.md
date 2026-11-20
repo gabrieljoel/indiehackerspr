@@ -9,7 +9,7 @@ faq:
   - q: ¿Qué es el Mastermind de los viernes?
     a: Es una sesión online por Google Meet cada viernes de 10:00 a 11:00 AM, hora de Puerto Rico. Miembros presentan su venture y reciben feedback táctico del grupo para avanzar cada semana. La organiza Emanuel Rolon y el registro es en [Luma](https://luma.com/indiehackers_pr).
   - q: ¿Cómo me uno a la comunidad?
-    a: Entra al [Slack de la comunidad](https://communityinviter.com/apps/indiehackerspr/indie-hackers-puerto-rico) y regístrate en [Luma](https://luma.com/indiehackers_pr) para el Mastermind. Para salir en la lista de miembros, copia el prompt de [Contribuye](/contribuye/) y tu agente te añade.
+    a: Entra al [Slack de la comunidad](https://inviter.co/indie-hackers-pr) y regístrate en [Luma](https://luma.com/indiehackers_pr) para el Mastermind. Para salir en la lista de miembros, copia el prompt de [Contribuye](/contribuye/) y tu agente te añade.
   - q: ¿Tengo que vivir en Puerto Rico para participar?
     a: No. El Mastermind y el Slack son online, así que puedes participar desde donde estés. La comunidad es para techies y emprendedores con el corazón en la Isla, vivan donde vivan.
   - q: ¿Dónde se puede trabajar remoto en Puerto Rico?

@@ -13,6 +13,9 @@ Indie Hackers Puerto Rico es la comunidad local de Indie Hackers (indiehackers.c
 {{- with site.GetPage "/blog" }}
 - [{{ .Title }}]({{ .Permalink }}): {{ .Description }}
 {{- end }}
+{{- with site.GetPage "/unete" }}
+- [{{ .Title }}]({{ .Permalink }}): {{ .Description }}
+{{- end }}
 {{- with site.GetPage "/contribuye" }}
 - [{{ .Title }}]({{ .Permalink }}): {{ .Description }}
 {{- end }}

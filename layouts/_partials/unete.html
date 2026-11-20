@@ -1,0 +1,43 @@
+{{- /* The pitch for the Slack: why join, with members' faces and the button. On the home page and on /unete/. */ -}}
+<section id="unete" class="scroll-mt-4 bg-flamboyan text-white">
+  <div class="mx-auto grid max-w-6xl items-center gap-14 px-4 py-20 sm:px-6 sm:py-24 lg:grid-cols-[6fr_5fr]">
+    <div>
+      <p class="text-sm font-bold uppercase tracking-wider text-white/80">¿Trabajas remoto, eres freelancer o trabajas solo?</p>
+      <h2 class="display mt-4 max-w-3xl text-4xl sm:text-6xl">No tienes que construir solo.</h2>
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/90 sm:text-xl">
+        Emprender por tu cuenta en Puerto Rico es solitario. En el Slack hay {{ site.Params.slackMembers }} personas
+        construyendo lo mismo que tú desde la Isla: una cafetería virtual donde nos ayudamos, nos relajamos un poco y
+        discutimos estrategias de negocio.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+        <a href="{{ site.Params.links.slack }}" class="btn-light px-8 py-4 text-lg shadow-[5px_5px_0_var(--color-navy)]">Únete gratis al Slack →</a>
+        <div class="flex items-center gap-3">
+          <ul class="flex -space-x-3" aria-hidden="true">
+            {{ range first 5 (after 6 hugo.Data.miembros) }}
+              {{ with resources.Get (printf "images/miembros/%s" .photo) }}
+                {{ with .Fill "96x96 webp smart" }}
+                  <li><img src="{{ .RelPermalink }}" width="40" height="40" alt="" loading="lazy" class="size-10 rounded-full border-2 border-flamboyan object-cover"></li>
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          </ul>
+          <p class="text-sm font-semibold leading-tight">{{ site.Params.slackMembers }} personas<br><span class="text-white/75">ya están adentro</span></p>
+        </div>
+      </div>
+    </div>
+
+    <ul class="grid gap-4 sm:grid-cols-2">
+      {{ range slice
+        (dict "t" "Pregunta y te contestan" "d" "Impuestos, leyes, pricing, herramientas: alguien ya pasó por eso aquí y te dice cómo le fue.")
+        (dict "t" "Feedback antes de lanzar" "d" "Enseña tu producto o tu landing y recibe opiniones honestas de gente que construye.")
+        (dict "t" "Tu gente, todos los días" "d" "Celebra las ventas, desahógate de los clientes y conoce a tus próximos socios.")
+        (dict "t" "Primero en enterarte" "d" "Cada sesión del Mastermind, cada post nuevo y lo que se mueve en el ecosistema.")
+      }}
+        <li class="rounded-xl border-2 border-navy bg-white p-5 text-navy shadow-[5px_5px_0_var(--color-navy)]">
+          <h3 class="text-lg font-bold leading-tight">{{ .t }}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-navy/75">{{ .d }}</p>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+</section>

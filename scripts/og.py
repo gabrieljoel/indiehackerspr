@@ -31,6 +31,7 @@ OG = {
     "og.png": ("Indie Hackers\nPuerto Rico", "El hogar de los emprendedores independientes.\nMastermind online cada viernes y comunidad en Slack."),
     "og-trabajo-remoto.png": ("Dónde trabajar\nremoto en PR", "Cafeterías y coworkings con buen Wi‑Fi y enchufes,\nevaluados por la comunidad."),
     "og-contribuye.png": ("Contribuye con\ntu agente", "Copia un prompt, pégalo en tu agente\ny él abre el pull request por ti."),
+    "og-unete.png": ("Únete a la\ncomunidad", "Emprendedores independientes en Puerto Rico.\nEntra gratis al Slack y al Mastermind de los viernes."),
 }
 
 

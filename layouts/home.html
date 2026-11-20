@@ -20,7 +20,7 @@
           en Puerto Rico. Nos reunimos online cada viernes y hablamos todos los días en Slack.
         </p>
         <div class="mt-10 flex flex-wrap gap-4">
-          <a href="{{ $links.slack }}" class="btn-solid">Únete a la comunidad en Slack</a>
+          <a href="{{ $links.slack }}" class="btn-solid">Únete gratis al Slack →</a>
           <a href="#mastermind" class="btn-outline">Ver el Mastermind semanal</a>
         </div>
       </div>
@@ -119,15 +119,7 @@
   {{ end }}
 
   {{/* Slack */}}
-  <section class="bg-flamboyan text-white">
-    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-      <h2 class="display max-w-3xl text-4xl sm:text-5xl">¿Trabajas remoto, eres freelancer o trabajas solo?</h2>
-      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-white/90">
-        Somos {{ site.Params.slackMembers }} personas en Slack. Es una cafetería virtual: nos ayudamos, nos relajamos un poco y discutimos estrategias de negocio.
-      </p>
-      <a href="{{ $links.slack }}" class="btn-light mt-8">Únete a nuestra comunidad</a>
-    </div>
-  </section>
+  {{ partial "unete.html" . }}
 
   {{/* Members */}}
   <section id="miembros" class="scroll-mt-4">
@@ -147,6 +139,11 @@
           {{ partial "miembro.html" . }}
         {{ end }}
       </ul>
+      <p class="mt-16 text-lg font-semibold">
+        ¿Todavía no estás en el Slack?
+        <a href="{{ $links.slack }}" class="text-flamboyan underline decoration-2 underline-offset-4 hover:text-navy">Únete y preséntate</a>:
+        la comunidad está esperándote.
+      </p>
     </div>
   </section>
 

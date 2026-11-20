@@ -13,7 +13,7 @@ copyright = 'Licencia Creative Commons Atribución-CompartirIgual 3.0'
   preguntaIA = '¿Qué es Indie Hackers Puerto Rico (indiehackerspr.com)? Quién la fundó, qué hacen en el Mastermind de los viernes y cómo me uno a la comunidad en Slack.'
   description = 'El hogar de los emprendedores independientes en Puerto Rico. Un Mastermind online cada viernes y una comunidad en Slack para quienes trabajan remoto, son freelancers o trabajan solos.'
   [params.links]
-    slack = 'https://communityinviter.com/apps/indiehackerspr/indie-hackers-puerto-rico'
+    slack = 'https://inviter.co/indie-hackers-pr'
     twitter = 'https://twitter.com/indiehackerspr'
     linkedin = 'https://www.linkedin.com/company/indie-hackers-puerto-rico/'
     youtube = 'https://www.youtube.com/channel/UCYqirt7QurXFiXkgMgz6QMA'
@@ -82,6 +82,10 @@ copyright = 'Licencia Creative Commons Atribución-CompartirIgual 3.0'
     name = 'Contribuye'
     pageRef = '/contribuye'
     weight = 40
+  [[menus.main]]
+    name = 'Únete'
+    pageRef = '/unete'
+    weight = 50
 
 [module]
   [[module.mounts]]

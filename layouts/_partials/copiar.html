@@ -1,4 +1,5 @@
-{{- /* Copy buttons, on any page: data-copy names the element whose text is copied, data-copy-text carries the text. */ -}}
+{{- /* Copy buttons, on any page: data-copy names the element whose text is copied, data-copy-text carries the text,
+   data-copied the confirmation. */ -}}
 <script>
   for (const button of document.querySelectorAll("[data-copy], [data-copy-text]")) {
     const label = button.textContent;
@@ -17,7 +18,7 @@
         copied = document.execCommand("copy");
         area.remove();
       }
-      button.textContent = copied ? "¡Copiado! Pégalo en tu agente" : "No se pudo copiar: búscalo en /contribuye";
+      button.textContent = copied ? (button.dataset.copied ?? "¡Copiado! Pégalo en tu agente") : "No se pudo copiar: búscalo en /contribuye";
       setTimeout(() => (button.textContent = label), 2500);
     });
   }
